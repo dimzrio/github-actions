@@ -3,26 +3,24 @@ name: Deploy
 on: push
 
 jobs:
-  runs-on: ubuntu-latest
-  build:
+  build-test:
+    runs-on: ubuntu-latest
     steps:
       - name: build
         run: echo "Linting and building project"
 
-  tests:
-    steps:
       - name: Failed scenario
         run: exit 1
 
   create-issue-if-test-failed:
     if: ${{ failure() }}
-    needs: [ build, tests ]
+    needs: [ build-test ]
     steps:
       - name: Create github issue
         run: echo "Tests Failed in CI Pipeline"
 
   deploy:
-    needs: [ tests ]
+    needs: [ build-test ]
     steps:
       - name: Deploying
         run: echo "Deploying to ..."
