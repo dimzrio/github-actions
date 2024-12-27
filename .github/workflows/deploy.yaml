@@ -9,7 +9,7 @@ jobs:
       - run: echo "deploy apps..."
 
   e2e-testing:
-    needs: build
+    needs: deploy
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
