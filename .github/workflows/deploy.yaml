@@ -20,7 +20,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: [ build-test ]
+    needs: [ create-issue-if-test-failed ]
     if: needs.create-issue-if-test-failed.result == 'skipped'
     steps:
       - name: Deploying
