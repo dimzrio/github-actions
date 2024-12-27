@@ -12,7 +12,7 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     needs:
-      - lint-build
+      - build
     steps:
       - name: Running unit tests
         run: echo "Running tests..."
@@ -22,17 +22,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs:
-      - unit-tests
+      - tests
     steps:
       - name: Deploying
         run: echo "Deploying to ..."
 
-  create-issue-from-test:
+  create-issue-if-test-failed:
     runs-on: ubuntu-latest
     if: ${{ failure() }}
     needs:
-      - lint-build
-      - unit-tests
+      - build
+      - tests
     steps:
       - name: Create github issue
         run: echo "Tests Failed in CI Pipeline"
+
+  e2e-test:
+    runs-on: ubuntu-latest
+    needs:
+      - deploy
+    steps:
+      - name: Testing end-to-end
+        run: echo "Testing..."
