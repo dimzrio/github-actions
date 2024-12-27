@@ -14,10 +14,8 @@ jobs:
     steps:
       - name: Running unit tests
         run: echo "Running tests..."
-      - name: Make Failing tests
-        run: exit 1
 
-  check-test:
+  create-issue:
     runs-on: ubuntu-latest
     if: ${{ failure() }}
     needs:
