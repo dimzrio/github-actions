@@ -17,17 +17,20 @@ jobs:
       - name: Make Failing tests
         run: exit 1
 
-  issue:
+  check-test:
     runs-on: ubuntu-latest
     if: ${{ failure() }}
     needs:
       - unit-tests
+      - lint-build
     steps:
       - name: Create github issue
         run: echo "Tests Failed in CI Pipeline"
 
   deploy:
     runs-on: ubuntu-latest
+    needs:
+      - check-test
     steps:
       - name: Deploying
         run: echo "Deploying to ..."
