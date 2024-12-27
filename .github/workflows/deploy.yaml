@@ -13,6 +13,7 @@ jobs:
         run: exit 1
 
   create-issue-if-test-failed:
+    runs-on: ubuntu-latest
     if: ${{ failure() }}
     needs: [ build-test ]
     steps:
@@ -20,6 +21,7 @@ jobs:
         run: echo "Tests Failed in CI Pipeline"
 
   deploy:
+    runs-on: ubuntu-latest
     needs: [ build-test ]
     steps:
       - name: Deploying
