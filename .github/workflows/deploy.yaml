@@ -23,8 +23,6 @@ jobs:
 
   quality-code:
     runs-on: ubuntu-latest
-    if: ${{ always() }}
-    needs: [ build-test ]
     steps:
       - run: echo "Failed alert test"
 
