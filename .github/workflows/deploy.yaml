@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Running unit tests
         run: echo "Running tests..."
+      - name: Failed scenario
+        run: exit 1
 
   if-failed:
     runs-on: ubuntu-latest
