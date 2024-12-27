@@ -21,7 +21,6 @@ jobs:
 
   create-report:
     runs-on: ubuntu-latest
-    if: ${{ failure() }}
     needs: [ quality-code ]
     steps:
       - run: echo "Failed alert test"
