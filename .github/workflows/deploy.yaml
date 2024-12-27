@@ -16,7 +16,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: [ create-issue ]
-    if: always() && needs.create-issue.result == 'skipped'
+    needs: [ create-issue-if-test-failed ]
+    if: always() && needs.create-issue-if-test-failed.result == 'skipped'
     steps:
       - run: echo "Deploying to ..."
