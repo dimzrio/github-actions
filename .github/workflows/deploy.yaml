@@ -7,7 +7,7 @@ jobs:
     steps:
       - run: echo "Failed scenario" && exit 1
 
-  create-issue-if-test-failed:
+  create-issue:
     runs-on: ubuntu-latest
     if: ${{ failure() }}
     needs: [ build-test ]
@@ -21,9 +21,16 @@ jobs:
     steps:
       - run: echo "Failed alert test"
 
+  quality-code:
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: [ build-test ]
+    steps:
+      - run: echo "Failed alert test"
+
   deploy:
     runs-on: ubuntu-latest
-    needs: [ create-issue-if-test-failed, send-alert ]
-    if: needs.create-issue-if-test-failed.result == 'skipped'
+    needs: [ create-issue, send-alert, quality-code ]
+    if: needs.create-issue.result == 'skipped'
     steps:
       - run: echo "Deploying to ..."
