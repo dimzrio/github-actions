@@ -28,7 +28,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs:
-      - check-test
+      - create-issue
     steps:
       - name: Deploying
         run: echo "Deploying to ..."
