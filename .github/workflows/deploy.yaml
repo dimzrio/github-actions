@@ -24,6 +24,7 @@ jobs:
     if: ${{ failure() }}
     needs:
       - lint-build
+      - unit-tests
     steps:
       - name: Create github issue
         run: echo "Tests Failed in CI Pipeline"
