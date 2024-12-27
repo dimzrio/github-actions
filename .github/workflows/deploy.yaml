@@ -32,4 +32,4 @@ jobs:
       - unit-tests
     steps:
       - name: Create github issue
-        run: echo "🚨 Tests Failed in CI Pipeline"
+        run: echo "Tests Failed in CI Pipeline"
