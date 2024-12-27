@@ -27,7 +27,7 @@ jobs:
 
   issue:
     runs-on: ubuntu-latest
-     if: ${{ failure() }}
+    if: ${{ failure() }}
     needs:
       - unit-tests
     steps:
