@@ -5,7 +5,7 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Failed scenario" && exit 1
+      - run: echo "Build and test"
 
   create-issue:
     runs-on: ubuntu-latest
