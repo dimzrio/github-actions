@@ -27,7 +27,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: [ create-issue, create-report ]
+    needs: [ create-issue ]
     if: needs.create-issue.result == 'skipped'
     steps:
       - run: echo "Deploying to ..."
