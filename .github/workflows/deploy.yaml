@@ -11,5 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: sleep 15
-      - run: echo "Deployed"
+      - run: sleep 60
+      - run: echo "Deployed!"
