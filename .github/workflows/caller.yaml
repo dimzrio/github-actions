@@ -1,7 +1,6 @@
 name: Production (Reusable Workflow)
 
-on:
-  workflow_dispatch:
+on: push
 
 jobs:
   deploy:
